@@ -7,7 +7,6 @@ var React = _interopDefault(require('react'));
 var PropTypes = _interopDefault(require('prop-types'));
 var Helmet = require('react-helmet');
 var Helmet__default = _interopDefault(Helmet);
-var LiveRegion = _interopDefault(require('live-region'));
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -817,17 +816,20 @@ var navigationMenuData = {
   useCaseMenu: {
     name: 'Use cases',
     links: [{
-      name: 'Asset tracking',
-      to: '/use-cases/asset-tracking/'
+      name: 'Store Locator',
+      to: '/use-cases/store-locator/'
     }, {
-      name: 'Data visualization',
-      to: '/use-cases/data-visualization/'
+      name: 'Turn-by-turn navigation',
+      to: '/use-cases/turn-by-turn-navigation/'
     }, {
       name: 'On-demand logistics',
       to: '/use-cases/on-demand-logistics/'
     }, {
-      name: 'Turn-by-turn navigation',
-      to: '/use-cases/turn-by-turn-navigation/'
+      name: 'Data visualization',
+      to: '/use-cases/data-visualization/'
+    }, {
+      name: 'Asset tracking',
+      to: '/use-cases/asset-tracking/'
     }],
     highlightedLinks: [{
       name: 'Customer showcase',
@@ -2306,35 +2308,15 @@ var PageFooter = function (_React$Component) {
 var DEFAULT_SOCIAL_IMAGE_URL = 'https://www.mapbox.com/social-1200x630.png';
 var DEFAULT_SOCIAL_IMAGE_THUMBNAIL_URL = 'https://www.mapbox.com/social-120x120.png';
 
-var liveRegion = void 0;
-
 var MetaTagger = function (_React$PureComponent) {
   inherits(MetaTagger, _React$PureComponent);
 
   function MetaTagger() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
     classCallCheck(this, MetaTagger);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = MetaTagger.__proto__ || Object.getPrototypeOf(MetaTagger)).call.apply(_ref, [this].concat(args))), _this), _this.handleHelmetStateChange = function () {
-      liveRegion.announce('Loaded page ' + _this.props.title + '.');
-    }, _temp), possibleConstructorReturn(_this, _ret);
+    return possibleConstructorReturn(this, (MetaTagger.__proto__ || Object.getPrototypeOf(MetaTagger)).apply(this, arguments));
   }
 
   createClass(MetaTagger, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      if (!liveRegion) {
-        liveRegion = new LiveRegion();
-      }
-    }
-  }, {
     key: 'render',
     value: function render() {
       var props = this.props;
@@ -2376,11 +2358,7 @@ var MetaTagger = function (_React$PureComponent) {
         metaItems.push({ name: 'robots', content: 'noindex' });
       }
 
-      return React.createElement(Helmet__default, {
-        title: suffixedTitle,
-        meta: metaItems,
-        onChangeClientState: this.handleHelmetStateChange
-      });
+      return React.createElement(Helmet__default, { title: suffixedTitle, meta: metaItems });
     }
   }]);
   return MetaTagger;
