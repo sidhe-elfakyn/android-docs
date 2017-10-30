@@ -41,8 +41,17 @@ let MapSdkExamplesLayout = class MapSdkExamplesLayout extends React.Component {
             exampleTitle="Display 3D buildings on any map style"
             exampleDescription="Plugin allows you to toggle building layer on and off and can be used with any style."
             difficulty="intro"
-            exampleImgID="examplesBuilding"
+            exampleImgID="examplesBuildingPlugin"
             exampleUrl="https://github.com/mapbox/mapbox-android-demo/blob/master/MapboxAndroidDemo/src/main/java/com/mapbox/mapboxandroiddemo/examples/plugins/BuildingPluginActivity.java"
+          />
+        </ExampleCardContainer>
+        <ExampleCardContainer exampleTitle="Marker cluster">
+          <ExampleCard
+            exampleTitle="Automatically add marker clusters to a map"
+            exampleDescription="This plugin adds clusters to your Mapbox map for an improved UI experience"
+            difficulty="intro"
+            exampleImgID="examplesMarkerClusterPlugin"
+            exampleUrl="https://github.com/mapbox/mapbox-android-demo/blob/master/MapboxAndroidDemo/src/main/java/com/mapbox/mapboxandroiddemo/examples/plugins/MarkerClustersPluginActivity.java"
           />
         </ExampleCardContainer>
       </PageShell>

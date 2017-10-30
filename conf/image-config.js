@@ -201,11 +201,11 @@ module.exports = {
     basename: 'plugins-traffic-plugin.png',
     sizes: [{ width: 520 }]
   },
-  examplesLocationLayer: {
-    basename: 'plugins-location-layer.png',
+  examplesMarkerClusterPlugin: {
+    basename: 'plugins-marker-clusters-plugin.png',
     sizes: [{ width: 520 }]
   },
-  examplesBuilding: {
+  examplesBuildingPlugin: {
     basename: 'plugins-building.png',
     sizes: [{ width: 520 }]
   },
