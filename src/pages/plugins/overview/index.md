@@ -17,10 +17,10 @@ overviewHeaderProps:
     - 3D Buildings
   newFeature:
     - false
-    - true
-    - true
-    - true
-    - true
+    - false
+    - false
+    - false
+    - false
 prependJs:
   - |
     import {
@@ -68,5 +68,5 @@ compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-traffic:{{ TRAFFIC_PLUGIN_VE
 compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:{{ LOCATION_LAYER_PLUGIN_VERSION }}'
 compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-building:{{ BUILDING_PLUGIN_VERSION }}'
 compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-geojson:{{ GEOJSON_PLUGIN_VERSION }}'
-compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-geojson:{{ MARKER_CLUSTER_PLUGIN_VERSION }}'
+compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-cluster-utils:{{ MARKER_CLUSTER_PLUGIN_VERSION }}'
 ```
