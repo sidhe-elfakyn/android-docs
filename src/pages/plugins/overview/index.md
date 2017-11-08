@@ -11,10 +11,10 @@ overviewHeaderProps:
   ghLink: "https://github.com/mapbox/mapbox-plugins-android"
   sdkFeatures:
     - Traffic on any style
-    - Location layer
-    - Show user orientation
+    - Show device location
     - Navigation puck
-    - 3D Buildings
+    - 3D buildings
+    - Marker clusters
   newFeature:
     - false
     - false

@@ -25,7 +25,8 @@ const productPageOrder = {
     'building',
     'location-layer',
     'traffic',
-    'geojson'
+    'geojson',
+    'marker-cluster'
   ],
   'plugins/examples/': ['index'],
   'navigation/overview/': [
