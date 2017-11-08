@@ -1,71 +1,31 @@
 ---
-title: "Mapbox Plugins"
-description: "Mapbox Android plugins overview"
+title: "Marker cluster"
+description: "Mapbox Android Marker Cluster Plugin"
 sideNavSections:
-  - title: "Overview"
-  - title: "Install a plugin"
-  - title: "Selectively compiling plugins"
-overviewHeaderProps:
-  imageId: overviewPlugins
-  sdk: Mapbox Plugins
-  ghLink: "https://github.com/mapbox/mapbox-plugins-android"
-  sdkFeatures:
-    - Traffic on any style
-    - Show user location
-    - 3D Buildings
-    - Retrieve and show GeoJSON data
-    - Marker clusters
-  newFeature:
-    - false
-    - false
-    - false
-    - false
-    - false
-prependJs:
-  - |
-    import {
-      TRAFFIC_PLUGIN_VERSION,
-      LOCATION_LAYER_PLUGIN_VERSION,
-      BUILDING_PLUGIN_VERSION,
-      GEOJSON_PLUGIN_VERSION, MARKER_CLUSTER_PLUGIN_VERSION
-    } from '../../../constants';
+  - title: "Add the marker cluster plugin"
+  
 ---
-Mapbox Plugins build on top of the [Map SDK](/android-docs/map-sdk/overview/getting-started/) providing extra features in lightweight dependencies. Whether you're looking to include traffic on top of your map or show the user location as a layer, plugins offer customizable APIs with a few lines of code to get started. Separating features into different plugins also allows for a more aggressive updating timeline.
 
-## Install a plugin
+# Marker cluster
 
-By using a plugin, you also include the Android Map SDK which means that you'll need to setup your project to use the Map SDK if you haven't already. Head over to the [Map SDK Getting Started](/android-docs/map-sdk/overview/getting-started/) documentation to learn more. The example below shows how to install the Traffic Plugin, but the process is identical for other plugins.
+The marker cluster plugin for 
 
-Note that depending on the plugin you add, there might be required permissions and additional setup steps. You'll find more information on whether or not more configuration steps are involved when looking at the specific plugin documentation.
+## Add the marker cluster plugin
 
-### 1. Add the dependency
+The marker cluster plugin requires no additional permissions and is initialized by passing in both the activity context and a `mapboxMap` object. 
 
-1. Start Android Studio
-2. Open up your application's `build.gradle`
-3. Make sure that your project's `minSdkVersion` is at API 15 or higher
-4. Under dependencies, add a new build rule for the latest plugin version you are trying to use.
-5. Click the Sync Project with Gradle Files near the toolbar in Studio.
-
-```groovy
-repositories {
-  mavenCentral()
-}
-
-dependencies {
-  compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-traffic:{{ TRAFFIC_PLUGIN_VERSION }}'
-}
+```java
+clusterManagerPlugin = new ClusterManagerPlugin<>(MarkerClustersPluginActivity.this, mapboxMap);
 ```
 
-## Selectively compiling plugins
+## Customization
 
-Plugins give you the flexibility to only include the features your particular application requires, meaning you can selectively choose which specific APIs your application needs. For example, if you only want to display a traffic layer inside your app you only need to include the Traffic Plugin dependency in your project.
+While the building plugin provides default values which look good for most use cases, you might find yourself wanting to customize the look of the buildings to match a map style. Several APIs are available for changing building color, opacity, what zoom level buildings should start appearing, etc. The table below provides information on the current APIs useful for customization.
 
-The list below shows all the current separated dependencies you can use in your Android application.
+| API | Description |
+| --- | --- |
+| `setMinZoomLevel` | This is the minimum zoom level where buildings will start to show. useful to limit showing buildings at higher zoom levels. |
+| `setColor` | Change the building color to any Android color int value. |
+| `setOpacity` | Float value between 0.0 and 1.0 representing the opacity of the buildings. 1.0 being solid and 0.0 being invisible. |
 
-```groovy
-compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-traffic:{{ TRAFFIC_PLUGIN_VERSION }}'
-compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:{{ LOCATION_LAYER_PLUGIN_VERSION }}'
-compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-building:{{ BUILDING_PLUGIN_VERSION }}'
-compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-geojson:{{ GEOJSON_PLUGIN_VERSION }}'
-compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-geojson:{{ MARKER_CLUSTER_PLUGIN_VERSION }}'
-```
+
