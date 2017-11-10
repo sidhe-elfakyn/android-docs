@@ -8,7 +8,7 @@ sideNavSections:
 
 # Marker cluster
 
-The marker cluster plugin adds 
+The marker cluster plugin allows for easy and automatic "clustering" of markers on a Mapbox map. The clustering is largely dependendent on the location and zoom level of the map camera. Instead of having many markers on top of one another, the plugin can create a cleaner map experience by showing various circles with numbers. The single number inside of a cluster circle represents the amount of markers that are in the circle's area at a higher/closer zoom level.
 
 ## Using the marker cluster plugin
 
