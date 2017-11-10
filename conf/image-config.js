@@ -205,6 +205,14 @@ module.exports = {
     basename: 'plugins-marker-clusters-plugin.png',
     sizes: [{ width: 520 }]
   },
+  examplesLocationLayer: {
+-    basename: 'plugins-location-layer.png',
+     sizes: [{ width: 520 }]
+     },
++  examplesMarkerClusterPlugin: {
++    basename: 'plugins-marker-clusters-plugin.png',
+     sizes: [{ width: 520 }]
+   },
   examplesBuildingPlugin: {
     basename: 'plugins-building.png',
     sizes: [{ width: 520 }]
