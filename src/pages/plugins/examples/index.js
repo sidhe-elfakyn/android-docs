@@ -32,7 +32,7 @@ let MapSdkExamplesLayout = class MapSdkExamplesLayout extends React.Component {
             exampleTitle="Location tracking"
             exampleDescription="Example showing how to setup the location layer plugin to indicate the users current location on the map."
             difficulty="intro"
-            exampleImgID="examplesLocationLayer"
+            exampleImgID="examplesLocationLayerPlugin"
             exampleUrl="https://github.com/mapbox/mapbox-android-demo/blob/master/MapboxAndroidDemo/src/main/java/com/mapbox/mapboxandroiddemo/examples/plugins/LocationPluginActivity.java"
           />
         </ExampleCardContainer>
