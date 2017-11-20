@@ -17,17 +17,18 @@ overviewHeaderProps:
     - 3D Buildings
   newFeature:
     - false
-    - true
-    - true
-    - true
-    - true
+    - false
+    - false
+    - false
+    - false
 prependJs:
   - |
     import {
       TRAFFIC_PLUGIN_VERSION,
       LOCATION_LAYER_PLUGIN_VERSION,
       BUILDING_PLUGIN_VERSION,
-      GEOJSON_PLUGIN_VERSION
+      GEOJSON_PLUGIN_VERSION,
+      PLACES_PLUGIN_VERSION
     } from '../../../constants';
 ---
 Mapbox Plugins build on top of the [Map SDK](/android-docs/map-sdk/overview/getting-started/) providing extra features in lightweight dependencies. Whether you're looking to include traffic on top of your map or show the user location as a layer, plugins offer customizable APIs with a few lines of code to get started. Separating features into different plugins also allows for a more aggressive updating timeline.

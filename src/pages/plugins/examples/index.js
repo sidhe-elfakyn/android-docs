@@ -45,6 +45,15 @@ let MapSdkExamplesLayout = class MapSdkExamplesLayout extends React.Component {
             exampleUrl="https://github.com/mapbox/mapbox-android-demo/blob/master/MapboxAndroidDemo/src/main/java/com/mapbox/mapboxandroiddemo/examples/plugins/BuildingPluginActivity.java"
           />
         </ExampleCardContainer>
+        <ExampleCardContainer exampleTitle="Places">
+          <ExampleCard
+            exampleTitle="Add location search to your app"
+            exampleDescription="Plugin adds UI for your user to search for any location in the world."
+            difficulty="intro"
+            exampleImgID="examplesPlacesPlugin"
+            exampleUrl="https://github.com/mapbox/mapbox-android-demo/blob/master/MapboxAndroidDemo/src/main/java/com/mapbox/mapboxandroiddemo/examples/plugins/PlacesPluginActivity.java"
+          />
+        </ExampleCardContainer>
       </PageShell>
     );
   }

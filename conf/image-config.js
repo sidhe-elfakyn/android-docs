@@ -209,6 +209,10 @@ module.exports = {
     basename: 'plugins-building.png',
     sizes: [{ width: 520 }]
   },
+  examplesPlacesPlugin: {
+    basename: 'plugins-places.png',
+    sizes: [{ width: 520 }]
+  },
   examplesDirection: {
     basename: 'mapbox-services-direction.png',
     sizes: [{ width: 520 }]
