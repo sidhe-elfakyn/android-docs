@@ -52,7 +52,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-traffic:{{ TRAFFIC_PLUGIN_VERSION }}'
+  compile 'com.mapbox.mapboxsdk:PLUGIN_NAME:PLUGIN_VERSION_NUMBER'
 }
 ```
 
