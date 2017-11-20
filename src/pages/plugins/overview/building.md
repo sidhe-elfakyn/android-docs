@@ -8,7 +8,9 @@ sideNavSections:
 
 # Building
 
-Support for extrusions was added with `5.1.0` of the Map SDK, unlocking the possibility to display 3D buildings on your favorite map style. The building plugin extends this functionality and makes it even easier to add buildings to a map style. To install, head over to the [Mapbox Plugin Overview](/android-docs/plugins/overview/) page which will walk you through adding the dependency.
+Support for extrusions was added with `5.1.0` of the Map SDK, unlocking the possibility to display 3D buildings on your favorite map style. The building plugin extends this functionality and makes it even easier to add buildings to a map style. 
+
+**To install, head over to the [Mapbox Plugin Overview](/android-docs/plugins/overview/) page which will walk you through adding the dependency.**
 
 ## Add the building plugin
 

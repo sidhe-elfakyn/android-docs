@@ -13,7 +13,7 @@ GeoJSON is a JSON standard format for describing a wide variety of geographic da
 
 The Mapbox Android GeoJSON plugin makes it simple for you to load GeoJSON data into your project from a URL, an asset file, or path. The plugin also automatically draws the GeoJSON data on your map once the information is retrieved. 
 
-To install the plugin, head over to the [Mapbox Plugin Overview](/android-docs/plugins/overview/) page which will walk you through adding the dependency.
+**To install, head over to the [Mapbox Plugin Overview](/android-docs/plugins/overview/) page which will walk you through adding the dependency.**
 
 
 ## Using the GeoJSON plugin

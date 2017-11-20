@@ -12,7 +12,7 @@ The Mapbox Traffic Plugin adds a real-time traffic layer to any Mapbox base map.
 
 Similar to other plugins, a third optional parameter in the traffic plugin's constructor which is useful for specifying the layer in which you want the traffic to display below. If the layer ID's missing in the third parameter, the plugin will attempt to place the traffic below all symbol layers so that text and icons on the map are still visible on top of the traffic lines. It is always a good idea to pass in a string ID rather than relying on the Plugin to attempt to place the traffic below a symbol layer since it isn't guaranteed to work properly.
 
-To install, head over to the [Mapbox Plugin Overview](/android-docs/plugins/overview/) page which will walk you through adding the dependency.
+**To install, head over to the [Mapbox Plugin Overview](/android-docs/plugins/overview/) page which will walk you through adding the dependency.**
 
 ## Add traffic
 
