@@ -206,8 +206,8 @@ module.exports = {
     sizes: [{ width: 520 }]
   },
   examplesLocationLayerPlugin: {
--    basename: 'plugins-location-layer.png',
-     sizes: [{ width: 520 }]
+    basename: 'plugins-location-layer.png',
+    sizes: [{ width: 520 }]
   },
   examplesBuildingPlugin: {
     basename: 'plugins-building.png',
