@@ -33,6 +33,7 @@ const productPageOrder = {
     'index',
     'milestones',
     'navigation-options',
+    'navigation-ui',
     'off-route',
     'route-progress'
   ],
