@@ -25,7 +25,7 @@ Using Runtime styling, you're able to dynamically change the look and feel of yo
 
 Runtime styling expands upon the design power of Mapbox Studio and exposes all the same properties and attributes directly to mobile developers in our SDK.
 
-If you'd like to add simple annotations on your map quickly, you might want to make use of the [annotations offered](/map-sdk/overview/annotations/).
+If you'd like to add simple annotations on your map quickly, you might want to make use of the [annotations offered](https://www.mapbox.com/android-docs/map-sdk/overview/annotations/).
 
 ## Sources
 
@@ -112,10 +112,10 @@ mapboxMap.addSource(geoJsonSource);
 
 {{
   <Floater
-    url="https://github.com/mapbox/mapbox-android-demo/blob/master/MapboxAndroidDemo/src/main/java/com/mapbox/mapboxandroiddemo/examples/styles/LineLayerActivity.java"
-    title="Runtime animations"
+    url="https://www.mapbox.com/help/android-runtime-styling-intro/"
+    title="Runtime intro"
     category="tutorial"
-    text="Android tutorial walking through various ways to animate map sources and layers."
+    text="Read an explanation and view the code for using runtime styling to change a map's water color."
   />
 }}
 

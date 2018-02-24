@@ -4,21 +4,21 @@ description: "Mapbox Android Navigation SDK overview"
 sideNavSections:
   - title: "Overview"
   - title: "Install the Navigation SDK"
-  - title: "MapboxNavigation object"
+  - title: "MapboxNavigation Object"
   - title: "LocationEngine"
-  - title: "Lifecycle methods"
-  - title: "Navigation running"
+  - title: "Lifecycle Methods"
+  - title: "Navigation Running"
 overviewHeaderProps:
   imageId: overviewNavigationSdk
   sdk: Navigation SDK
   changelogLink: "https://github.com/mapbox/mapbox-navigation-android/blob/master/CHANGELOG.md"
   ghLink: "https://github.com/mapbox/mapbox-navigation-android"
   sdkFeatures:
-    - Off-route detection
-    - Timed instructions
-    - Snap to route
-    - Route progress info
-    - Traffic routing
+    - Off-route Detection
+    - Timed Instructions
+    - Snap-to-Route
+    - Route Progress Information
+    - Traffic Routing
   newFeature:
     - false
     - false
@@ -53,7 +53,8 @@ dependencies {
 ```
 
 ### 2. Get an access token
-If you don't have a Mapbox account, [sign up for one here](https://www.mapbox.com/signup/). Navigate to the token page in Mapbox Studio and copy your default public token to your clipboard. After you've added the Navigation SDK as a dependency inside your Android project, open the `string.xml` file, create a new string, and paste the access token. Then, pass this into the Navigation SDK.
+
+If you don't have a Mapbox account, sign up for one [here](https://www.mapbox.com/signup/), then navigate to your [Account page](https://www.mapbox.com/account/) and copy your **default public token** to your clipboard. After you've added the Navigation SDK as a dependency inside your Android project, open the `string.xml` file, create a new string, and paste the access token. Then, pass this into the Navigation SDK.
 
 ```java
 @Override
@@ -121,7 +122,7 @@ NavigationRoute.Builder builder = NavigationRoute.builder()
     builder.build();
 ```
 
-## MapboxNavigation object
+## MapboxNavigation Object
 
 You will find most of the navigation APIs inside the `MapboxNavigation` class such as starting and ending the navigation session or attaching listeners. Assign and initialize a new instance of `MapboxNavigation` inside your navigation activity. When initializing, you'll need to pass in a `Context` and your Mapbox access token. Read the access token section in this getting started document to learn how to get a free access token.
 
@@ -133,14 +134,14 @@ You can also optionally pass in a `MapboxNavigationOptions` object if you’d li
 
 ## LocationEngine
 
-Navigation requires the user's location to run; this is done using the `LocationEngine` class introduced in Mapbox Services 2.0. Visit the [`LocationEngine`](/mapbox-services/overview/telemetry/#locationengine) documentation for detailed instructions on how to use this class. You'll need to set up an instance of a location engine and pass it in to the `MapboxNavigation` object.
+Navigation requires the user's location to run; this is done using the `LocationEngine` class introduced in Mapbox Services 2.0. Visit the [`LocationEngine`](/android-docs/mapbox-services/overview/telemetry/#locationengine) documentation for detailed instructions on how to use this class. You'll need to set up an instance of a location engine and pass it in to the `MapboxNavigation` object.
 
 ```java
 LocationEngine locationEngine = LostLocationEngine.getLocationEngine(this);
 navigation.setLocationEngine(locationEngine);
 ```
 
-## Lifecycle methods
+## Lifecycle Methods
 
 Inside your application's activity, you'll want to override the onDestroy lifecycle method, end the navigation session (if running) and use the `MabpoxNavigation#onDestroy` method. Doing this prevents any memory leaks and ensures proper shutdown of the service.
 
@@ -154,7 +155,7 @@ protected void onDestroy() {
 }
 ```
 
-## Navigation running
+## Navigation Running
 
 The `onRunning` callback's helpful for being notified when the navigation session has started, the user has canceled the session, or the user has arrived at their final destination. From this information, you can decide when to show navigation notifications, know when it's safe to stop requesting user location updates, and much more.
 

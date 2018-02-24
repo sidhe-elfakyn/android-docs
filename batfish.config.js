@@ -35,6 +35,7 @@ const productPageOrder = {
     'navigation-options',
     'navigation-ui',
     'off-route',
+    'faster-route',
     'route-progress'
   ],
   'mapbox-services/overview/': [

@@ -28,6 +28,7 @@ prependJs:
       LOCATION_LAYER_PLUGIN_VERSION,
       BUILDING_PLUGIN_VERSION,
       GEOJSON_PLUGIN_VERSION,
+      PLACES_PLUGIN_VERSION,
       MARKER_CLUSTER_PLUGIN_VERSION
     } from '../../../constants';
 ---
@@ -68,4 +69,5 @@ implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-traffic:{{ TRAFFIC_PL
 implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:{{ LOCATION_LAYER_PLUGIN_VERSION }}'
 implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-building:{{ BUILDING_PLUGIN_VERSION }}'
 implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-geojson:{{ GEOJSON_PLUGIN_VERSION }}'
+implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-places:{{ PLACES_PLUGIN_VERSION }}'
 ```
