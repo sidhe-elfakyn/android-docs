@@ -16,6 +16,7 @@ prependJs:
     import {
       LOCATION_LAYER_PLUGIN_VERSION
     } from '../../../constants';
+    import { AppropriateImage } from '../../../components/appropriate-image';
 ---
 # Location Layer
 A popular, often critical feature is showing the users current location as an annotation to give a reference point on the map. This plugin makes use of the latest [runtime styling](/android-docs/map-sdk/overview/runtime-styling/) features to display the location icons/markers within the map itself rather than on top as an Android view. This brings several fixes and performance improvements previously experienced when using the now deprecated `MyLocationView`.
@@ -93,19 +94,19 @@ There are three types of `RenderMode`:
 | `COMPASS` | This mode shows the user location, as well as an arrow that is considering the compass of the device.  |
 | `GPS` | This mode shows the user location with the icon bearing updated from the `Location` updates being provided to the plugin. |
 
-`RenderMode.NORMAL`
+**RenderMode.NORMAL**
 
 {{
 <AppropriateImage imageId="locationLayerNormal" className="block mx-auto pt18" />
 }}
 
-`RenderMode.COMPASS`
+**RenderMode.COMPASS**
 
 {{
 <AppropriateImage imageId="locationLayerCompass" className="block mx-auto pt18" />
 }}
 
-`RenderMode.GPS`
+**RenderMode.GPS**
 
 {{
 <AppropriateImage imageId="locationLayerGps" className="block mx-auto pt18" />
@@ -130,19 +131,19 @@ There are currently 7 modes available:
 
 Here are a few examples from [`LocationLayerModesActivity`](https://github.com/mapbox/mapbox-plugins-android/blob/master/app/src/main/java/com/mapbox/mapboxsdk/plugins/testapp/activity/location/LocationLayerModesActivity.java) in the plugin test application:
 
-`CameraMode.NORMAL`
+**CameraMode.NORMAL**
 
 {{
 <AppropriateImage imageId="locationLayerNormalGif" className="block mx-auto pt18" />
 }}
 
-`CameraMode.COMPASS`
+**CameraMode.COMPASS**
 
 {{
 <AppropriateImage imageId="locationLayerCompassGif" className="block mx-auto pt18" />
 }}
 
-`CameraMode.GPS`
+**CameraMode.GPS**
 
 {{
 <AppropriateImage imageId="locationLayerGpsGif" className="block mx-auto pt18" />
