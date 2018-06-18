@@ -67,11 +67,43 @@ class SideNavigation extends React.Component {
             </a>
             <a
               href={prefixUrl(
+                `/api/plugins/places/${constants.PLACES_PLUGIN_VERSION}/index.html`
+              )}
+              className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
+            >
+              Places
+            </a>
+            <a
+              href={prefixUrl(
                 `/api/plugins/traffic/${constants.TRAFFIC_PLUGIN_VERSION}/index.html`
               )}
               className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
             >
               Traffic
+            </a>
+            <a
+              href={prefixUrl(
+                `/api/plugins/offline/${constants.OFFLINE_PLUGIN_VERSION}/index.html`
+              )}
+              className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
+            >
+              Offline
+            </a>
+            <a
+              href={prefixUrl(
+                `/api/plugins/localization/${constants.LOCALIZATION_PLUGIN_VERSION}/index.html`
+              )}
+              className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
+            >
+              Localization
+            </a>
+            <a
+              href={prefixUrl(
+                `/api/plugins/china/${constants.CHINA_PLUGIN_VERSION}/china-release/index.html`
+              )}
+              className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
+            >
+              China
             </a>
           </div>
         }
@@ -85,7 +117,7 @@ class SideNavigation extends React.Component {
     );
   }
 
-  getServicesApiItem() {
+  getJavaApiItem() {
     return (
       <PopoverTrigger
         content={
@@ -93,7 +125,7 @@ class SideNavigation extends React.Component {
             <strong className={'color-gray-light p6 txt-mm'}>Javadoc</strong>
             <a
               href={prefixUrl(
-                `/api/mapbox-java/libjava-core/${constants.MAS_VERSION}/index.html`
+                `/api/mapbox-java/libjava-core/${constants.JAVA_SDK_VERSION}/index.html`
               )}
               className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
             >
@@ -101,7 +133,7 @@ class SideNavigation extends React.Component {
             </a>
             <a
               href={prefixUrl(
-                `/api/mapbox-java/libjava-geojson/${constants.MAS_VERSION}/index.html`
+                `/api/mapbox-java/libjava-geojson/${constants.JAVA_SDK_VERSION}/index.html`
               )}
               className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
             >
@@ -109,43 +141,19 @@ class SideNavigation extends React.Component {
             </a>
             <a
               href={prefixUrl(
-                `/api/mapbox-java/libjava-services/${constants.MAS_VERSION}/index.html`
+                `/api/mapbox-java/libjava-turf/${constants.JAVA_SDK_VERSION}/index.html`
+              )}
+              className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
+            >
+              mapbox-java-turf
+            </a>
+            <a
+              href={prefixUrl(
+                `/api/mapbox-java/libjava-services/${constants.JAVA_SDK_VERSION}/index.html`
               )}
               className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
             >
               mapbox-java-services
-            </a>
-            <a
-              href={prefixUrl(
-                `/api/mapbox-java/libjava-services-rx/${constants.MAS_VERSION}/index.html`
-              )}
-              className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
-            >
-              mapbox-java-services-rx
-            </a>
-            <a
-              href={prefixUrl(
-                `/api/mapbox-java/libandroid-services/${constants.MAS_VERSION}/index.html`
-              )}
-              className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
-            >
-              mapbox-android-services
-            </a>
-            <a
-              href={prefixUrl(
-                `/api/mapbox-java/libandroid-telemetry/${constants.MAS_VERSION}/index.html`
-              )}
-              className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
-            >
-              mapbox-android-telemetry
-            </a>
-            <a
-              href={prefixUrl(
-                `/api/mapbox-java/libandroid-ui/${constants.MAS_VERSION}/index.html`
-              )}
-              className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
-            >
-              mapbox-android-ui
             </a>
           </div>
         }
@@ -161,10 +169,44 @@ class SideNavigation extends React.Component {
 
   getNavigationApiItem() {
     return (
+      <PopoverTrigger
+        content={
+          <div className={'flex-parent wmin180 pb12 flex-parent--column'}>
+            <strong className={'color-gray-light p6 txt-mm'}>Javadoc</strong>
+            <a
+              href={prefixUrl(
+                `/api/navigation-sdk/navigation/${constants.NAVIGATION_VERSION}/index.html`
+              )}
+              className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
+            >
+              navigation
+            </a>
+            <a
+              href={prefixUrl(
+                `/api/navigation-sdk/navigation-ui/${constants.NAVIGATION_VERSION}/index.html`
+              )}
+              className={`transition color-blue-on-hover txt-bold color-gray-dark mt3 bg-transparent txt-ms`}
+            >
+              navigation-ui
+            </a>
+          </div>
+        }
+        respondsToHover={true}
+        popoverProps={sideNavPopoverProps}
+      >
+        <button className={'txt-fancy color-blue-on-hover'}>
+          <strong>API Reference</strong>
+        </button>
+      </PopoverTrigger>
+    );
+  }
+
+  getCoreApiItem() {
+    return (
       <div className={'flex-parent wmin180 pb12 flex-parent--column'}>
         <a
           href={prefixUrl(
-            `/api/navigation-sdk/${constants.NAVIGATION_VERSION}/index.html`
+            `/api/telemetry/libcore/${constants.CORE_VERSION}/index.html`
           )}
           className="txt-fancy color-blue-on-hover"
         >
@@ -227,10 +269,12 @@ class SideNavigation extends React.Component {
       apiItem = this.getMapSdkApiItem();
     } else if (/\/plugins\/overview\//.test(props.currentPath)) {
       apiItem = this.getPluginsApiItem();
-    } else if (/\/mapbox-services\/overview\//.test(props.currentPath)) {
-      apiItem = this.getServicesApiItem();
+    } else if (/\/java-sdk\/overview\//.test(props.currentPath)) {
+      apiItem = this.getJavaApiItem();
     } else if (/\/navigation\/overview\//.test(props.currentPath)) {
       apiItem = this.getNavigationApiItem();
+    } else if (/\/core\/overview\//.test(props.currentPath)) {
+      apiItem = this.getCoreApiItem();
     }
     return (
       <div className="col col--2-mm pt12 fixed none block-mm color-gray-dark unstyled-list scroll-styled scroll-auto">

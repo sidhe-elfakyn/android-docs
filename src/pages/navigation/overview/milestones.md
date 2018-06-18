@@ -1,32 +1,33 @@
 ---
 title: "Milestones"
-description: "Mapbox Android Navigation SDK milestones"
-sideNavSections:
-  - title: "Default milestones"
-  - title: "Building a custom milestone"
-  - title: "Custom instructions"
-  - title: "Milestone event listener"
+description: "Trusted documentation about milestones within the Mapbox Navigation SDK for Android. Know when to instruct your users and/or when to hide or show custom UI."
 ---
 
-# Milestones
+Navigation milestones inside the SDK provide a powerful way to give your user instructions or get cues to hide or show
+custom UI at defined locations along their route.  You can create custom milestones that fit your particular app needs.
 
-Navigation milestones inside the SDK provide a powerful way to give your user instructions at custom defined locations along their route. Aside from the default milestones that you'd expect from a Navigation SDK, you can create custom milestones that fit your particular app needs.
+## Default Milestones
 
-## Default milestones
+### VoiceInstructionMilestone
 
-Out of the box, the Navigation SDK includes a handful of milestones; these are common notifications users would expect to receive while navigating along a route. You'll find more information on the specific nature and possibilities with milestones in the next section, which discusses building a custom milestone. All the default milestones include a unique identifier that's useful inside the MilestoneEventListener callback. All the default options also provide an instruction String useful for voice announcements. The table below lists the default milestones, their identifiers and the instruction syntax.
+The `VoiceInstructionMilestone` will fire every time it's time to announce an instruction along a given `DirectionsRoute`.  This milestone provides
+a plain text instruction with `VoiceInstructionMilestone#getInstruction` as well as a SSML version of the same instruction with `VoiceInstructionMilestone#getSsmlAnnouncement`.  
+SSML stands for Speech Synthesis Markup Language and is designed to work with [AWS Polly](https://aws.amazon.com/documentation/polly/).  
 
-Identifier            | Instruction syntax                                                                                                                                                                                   | Description
---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-`URGENT_MILESTONE`    | `{instruction}` or `{instruction} then {next-step-instruction}` depending on the length of the next step.                                                                                                | Triggered when the user is x seconds away from the maneuver point, or 10 meters from the maneuver; whichever one occurs first will trigger the milestone. Only triggered once per step.
-`IMMINENT_MILESTONE`  | `Continue on {street-name} for {distance-remaining}`                                                                                                                                                   | Triggered when the step total distance is greater than 400 meters, and the total duration is within 70 seconds of the next maneuver.
-`NEW_STEP_MILESTONE`  | `In {distance-remaining} {instruction}`                                                                                                                                                                | Triggered when the user begins traversing along a new step that is not the first or last step in the route.
-`DEPARTURE_MILESTONE` | `Continue on {street-name} for {distance-remaining} and the``n {instruction}` or `{instruction} then in {distance-remaining} {next-instruction}` depending on how spread out the step maneuvers are. | Occurs when the user first departs from their current location and begins a navigation session.
-`ARRIVAL_MILESTONE`   | `{instruction}`                                                                                                                                                                                        | Triggered when the user is less than 25 meters away from the final maneuver.
+### BannerInstructionMilestone
 
-These get added to the navigation session at initialization time. Therefore, if you'd like to remove all the default milestones, you'll need to use `MapboxNavigationOptions.setDefaultMilestonesEnabled()` and pass in the options object while initializing `MapboxNavigation`.
+The `BannerInstructionMilestone` will fire every time textual instructions should be updated, most of the time in the format of a "banner" view on the top of the screen. This milestone provides a `BannerInstructions` object for the given point along the route.  This object contains text and URLs for shield images that can be displayed on screen at the time the milestone fires.  
 
-The default instructions are all set up for driving navigation. If you are interested in also supporting walking and cycling navigation, custom milestones will likely need to be built and added to handle the unique situations your user might run into while navigating.
+## Milestone event listener
+
+All the milestones use the `onMilestoneEvent` callback to alert when they get triggered. If you want to make use of the milestones API, you will want to attach a `MilestoneEventListener` inside your app. When all the milestone trigger conditions are true, the callback is invoked and provides you with the latest routeProgress along with the milestone's corresponding `String` instruction and the `Milestone` itself that was triggered. You can use your text-to-speech engine of choice and have it consume the instruction.
+
+```java
+@Override
+public void onMilestoneEvent(RouteProgress routeProgress, String instruction, Milestone milestone) {
+  exampleInstructionPlayer.play(instruction);
+}
+```
 
 ## Building a custom milestone
 
@@ -94,7 +95,3 @@ Instruction myInstruction = new Instruction() {
   }
 });
 ```
-
-## Milestone event listener
-
-All the milestones use the `onMilestoneEvent` callback to alert when they get triggered. If you want to make use of the milestones API, you will want to attach a `MilestoneEventListener` inside your app. When all the milestone trigger conditions are true, the callback is invoked and provides you with the latest routeProgress along with the milestones corresponding `String` instruction and identifier. The identifier is critical if you have multiple milestones that you would like to isolate logic to. You can also use your text-to-speech engine of choice and have it consume the instruction.

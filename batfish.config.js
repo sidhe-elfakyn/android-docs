@@ -6,9 +6,11 @@ const rehypeSlug = require('rehype-slug');
 const rehypeHighlightCodeBlock = require('@mapbox/rehype-highlight-code-block');
 const mapboxHighlighter = require('@mapbox/mapbox-highlighter');
 const mapboxAssembly = require('@mapbox/mapbox-assembly');
+const addLinksToHeadings = require('./plugins/add-links-to-headings');
+const makeTableScroll = require('./plugins/make-table-scroll');
 
 const productPageOrder = {
-  'map-sdk/overview/': [
+  'maps/overview/': [
     'index',
     'styling-map',
     'annotations',
@@ -16,32 +18,47 @@ const productPageOrder = {
     'events',
     'offline',
     'query',
-    'runtime-styling'
+    'runtime-styling',
+    'gestures'
   ],
-  'map-sdk/examples/': ['index'],
-  'map-sdk/tutorials/': ['index'],
-  'plugins/overview/': ['index', 'building', 'location-layer', 'traffic'],
+  'maps/examples/': ['index'],
+  'maps/tutorials/': ['index'],
+  'plugins/overview/': [
+    'index',
+    'building',
+    'location-layer',
+    'traffic',
+    'localization',
+    'places',
+    'china',
+    'offline'
+  ],
   'plugins/examples/': ['index'],
   'navigation/overview/': [
     'index',
     'milestones',
     'navigation-options',
+    'navigation-ui',
     'off-route',
-    'route-progress'
+    'faster-route',
+    'camera',
+    'route-progress',
+    'map-matching'
   ],
-  'mapbox-services/overview/': [
+  'java/overview/': [
     'index',
     'directions-matrix',
     'geocoder',
-    'static-image',
-    'telemtry'
+    'optimization',
+    'static-image'
   ],
-  'mapbox-services/examples/': ['index']
+  'java/examples/': ['index'],
+  'core/overview/': ['index']
 };
 
 module.exports = () => {
   const config = {
-    siteBasePath: 'android-docs',
+    siteBasePath: '/android-docs',
     siteOrigin: 'https://www.mapbox.com',
     browserslist: mapboxAssembly.browsersList,
     postcssPlugins: mapboxAssembly.postcssPipeline.plugins,
@@ -52,6 +69,9 @@ module.exports = () => {
       path.join(__dirname, './src/css/site.css')
     ],
     dataSelectors: {
+      platform: function() {
+        return 'Android';
+      },
       // Returns a dictionary for looking up ordered array of pages by product id
       // (slug).
       orderedPages: data => {
@@ -73,6 +93,32 @@ module.exports = () => {
           {}
         );
         return result;
+      },
+      listExamples: data => {
+        const examples = data.pages
+          .filter(page => {
+            return /\/examples\/+./.exec(page.path);
+          })
+          .map(example => {
+            return {
+              path: example.path,
+              title: example.frontMatter.title,
+              description: example.frontMatter.description,
+              topic: example.frontMatter.topic,
+              thumbnail: example.frontMatter.thumbnail
+            };
+          });
+        return examples;
+      },
+      listSubFolders: data => {
+        const folders = data.pages
+          .filter(file => {
+            return file.path.split('/').length === 5;
+          })
+          .map(folder => {
+            return folder;
+          });
+        return folders;
       }
     },
     webpackLoaders: [
@@ -88,7 +134,7 @@ module.exports = () => {
         ]
       }
     ],
-    babelPlugins: ['lodash', 'transform-class-properties'],
+    babelPlugins: [require('babel-plugin-lodash')],
     applicationWrapperPath: path.join(
       __dirname,
       'src/components/application-wrapper.js'
@@ -106,6 +152,8 @@ module.exports = () => {
       wrapper: path.join(__dirname, './src/components/markdown-page-shell.js'),
       rehypePlugins: [
         rehypeSlug,
+        addLinksToHeadings,
+        makeTableScroll,
         [rehypeHighlightCodeBlock, { highlight: mapboxHighlighter.highlight }]
       ]
     }
