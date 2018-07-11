@@ -5,7 +5,7 @@ import Icon from '@mapbox/react-icon';
 import { ProductMenuDropdown } from './product-menu-dropdown';
 import { ProductNavItems } from '../data/product-nav-items.js';
 
-let popoverProps = {
+const popoverProps = {
   placement: 'bottom',
   themePopover:
     'round shadow-darken25 viewport-almost-but-not-always scroll-auto scroll-styled'
@@ -17,20 +17,9 @@ class ProductMenu extends React.PureComponent {
     product: PropTypes.string.isRequired
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false
-    };
-  }
-
-  clickMore = () => {
-    popoverProps.themePopover = '';
-  };
-
-  renderMenu = () => {
+  renderMenu() {
     return <ProductMenuDropdown categories={ProductNavItems} />;
-  };
+  }
 
   onPopoverOpen = () => {
     this.setState({ open: true });
