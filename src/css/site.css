@@ -68,6 +68,11 @@
   max-width: 480px !important;
 }
 
+.viewport-almost-but-not-always {
+  max-height: 90vh;
+  min-height: 100%;
+}
+
 @media screen and (min-width: 800px) {
   .w480-ml {
     width: 480px !important;

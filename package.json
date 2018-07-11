@@ -27,7 +27,7 @@
     "@mapbox/appropriate-images-react": "^1.0.0",
     "@mapbox/mapbox-assembly": "^0.24.0",
     "@mapbox/page-loading-indicator": "^0.1.0",
-    "@mapbox/react-popover-trigger": "^0.3.0",
+    "@mapbox/react-popover-trigger": "^0.5.5",
     "@mapbox/react-icon": "^0.2.2",
     "@mapbox/react-code-snippet": "^0.1.21",
     "@mapbox/react-control-select": "^0.5.0",
