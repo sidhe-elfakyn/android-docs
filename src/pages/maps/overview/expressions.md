@@ -17,7 +17,7 @@ The set of expression operators provided by Mapbox GL includes:
 
 Expressions are represented as JSON arrays. The first element of an expression array is a string naming the expression operator, e.g. "*" or "case". Subsequent elements (if any) are the arguments to the expression. Each argument is either a literal value (a string, number, boolean, or null), or another expression array.
 
-## Popular expresions
+## Popular expressions
 
 You have many expressions to choose from. Especially if you're just beginning with expressions, you should become familiar with the following ones. You are likely to use these expressions for many of your data-driven styling goals:
 
