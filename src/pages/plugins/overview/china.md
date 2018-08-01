@@ -72,20 +72,51 @@ Mapbox currently offers 3 government-certified map styles for China that match t
 
 When using the constants found in this SDK you'll always be using the latest version of the map style when the plugin gets updated. Conversely, hardcoding allows you to have more control over the map style version and determining when your apps map style gets an update.
 
-## Shifting annotations
-In order to comply with the Chinese government's location requirements, we had to shift the base map for our default styles. This means you are required to also shift any annotations you place on top of your map so that it will match the shifted base map coordinate system. the module will convert WGS-84 into GCJ-02 standards. To better understand why shifting is required, we recommend reading [this wiki entry](https://en.wikipedia.org/wiki/Restrictions_on_geographic_data_in_China#The_China_GPS_shift_problem) and [this article](http://www.travelandleisure.com/articles/digital-maps-skewed-china).
 
-In 0.4.0, the shifting of annotations is a manual process which requires you to pass in your `Location`, `LatLng`, or GeoJSON geometry types to the publicly accessible `ShiftForChina.shift(double lon, double lat)` method. The returning object is a `String` representing a JSONObject. Therefore, to convert it back to it's original form, you'll need to write:
+### Shifting raw coordinates
+
+In order to comply with the Chinese government's location requirements, we had to shift the base map for our default styles. This means you are required to also shift any annotations that you place on top of your map so that they will match the shifted base map coordinate system. The module will convert WGS-84 into GCJ-02 standards. We recommend reading [this wiki entry](https://en.wikipedia.org/wiki/Restrictions_on_geographic_data_in_China#The_China_GPS_shift_problem) and [this article](http://www.travelandleisure.com/articles/digital-maps-skewed-china) to better understand why shifting is required.
+
+The plugin's China "flavor" has a `ShiftForChina` class with the `String shift(double lon, double lat)` method. You can pass _unshifted_ longitude and latitude coordinates to `shift()`. The method will return the shifted coordinates that you should use when adding data to your map (POI, GeoJSON geometries, etc.).
 
 ```java
-Location toLocation = new Location(fromLocation);
+String shiftedCoordinatesJson = shiftForChina.shift(unshiftedLong, unshiftedLat);
+
+double shiftedLat = 0;
+double shiftedLongitude = 0;
+
 try {
-  JSONObject jsonObject = new JSONObject(toJson);
-  toLocation.setLongitude(jsonObject.getDouble("lon"));
-  toLocation.setLatitude(jsonObject.getDouble("lat"));
+
+  JSONObject jsonObject = new JSONObject(shiftedCoordinatesJson);
+  shiftedLong = jsonObject.getDouble("lon");
+  shiftedLat = jsonObject.getDouble("lat");
+  
+  // You now have `shiftedLong` and `shiftedLat` values, which you can use however you'd like.
+  
 } catch (JSONException jsonException) {
   jsonException.printStackTrace();
 }
-```
+```    
 
-Do note that as mentioned above, the shift module is only available in the China Flavor of this plugin. This is the one exception to the rule mentioned above that you only need to switch dependency names if you'd like to support both global and China flavors of your app. In the case of a global version of your app, you'll need to remove the code that shifts your annotations. This will change in future releases of this SDK to make shifting much easier.
+## Shifting location
+
+Starting with the 0.4.0 version of this plugin, annotation shifting is a manual process which requires you to pass in your `Location`, `LatLng`, or GeoJSON geometry types to the publicly accessible `ShiftForChina.shift(double lon, double lat)` method. The returning object is a `String` representing a JSONObject. Therefore, to convert it back to it's original form, you'll need to write:
+
+```java
+ /**
+   * Called when the location has changed.
+   */
+  @Override
+  public void onLocationChanged(Location location) {
+      if (needChinaShifted) {
+        location = ShiftLocation.shift(location);
+      }
+  }
+```  
+
+When a new location update occurs, you'll need to manually feed in the `location` object into the plugin's `ShiftLocation` class. Rather than dealing with raw coordinate values, this method and class handles `Location` objects. For now, the best way to do this is to create your own `LocationEngine` which extends another and listens for location updates. When the update occurs, send the `Location` object through the shift module and have the `locationEngine` provide the modified location.
+
+
+Do note that as mentioned above, the shift module is only available in the plugin's China flavor. This is the one exception to the rule mentioned above that you only need to switch dependency names if you'd like to support both global and China flavors of your app.
+
+In the case of a global version of your app, you'll need to remove the code that shifts your annotations. This will change in future releases of this plugin, so that shifting becomes much easier.
